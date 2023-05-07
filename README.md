@@ -22,3 +22,7 @@ Your app is ready to be deployed!
 ### Q: What about Eject?
 
 No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+
+# 技术栈
+1. [snowpace react](https://www.snowpack.dev/tutorials/react)
+

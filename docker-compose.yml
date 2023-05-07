@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  cpcpcbcb:
+    image: cpcb
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 8080:8080
+      - 9229:9229
+    # command: ["tail", "-f", "/dev/null"]
+    command: ["npm", "run", "start"]
+    
