@@ -25,4 +25,5 @@ No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
 
 # 技术栈
 1. [snowpace react](https://www.snowpack.dev/tutorials/react)
+2. [janus](http://wfeii.com/2021/04/12/WebRTC-Janus.html)
 
