@@ -6,11 +6,12 @@
   },
   "devDependencies": {
     "@snowpack/plugin-react-refresh": "^2.5.0",
-    "snowpack": "^3.8.8",
-    "snowpack-plugin-optimize": "^0.5.0"
+    "@snowpack/plugin-webpack": "^3.0.0",
+    "snowpack": "^3.8.8"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "core-js": "^3.30.2",
     "draft-js": "^0.11.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

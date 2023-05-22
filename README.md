@@ -25,5 +25,8 @@ No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
 
 # 技术栈
 1. [snowpace react](https://www.snowpack.dev/tutorials/react)
-2. [janus](http://wfeii.com/2021/04/12/WebRTC-Janus.html)
+1. [janus](http://wfeii.com/2021/04/12/WebRTC-Janus.html)
+1. snowpack的webpack插件如何配置
+> 
+   请注意，Snowpack的Webpack插件（@snowpack/plugin-webpack）已在2022年被弃用，因为Snowpack v3.0之后已经完全迁移到了Snowpack自身的构建系统。现在，Snowpack使用ESBuild作为默认的构建工具，而不是Webpack。如果您使用的是Snowpack v3.0或更高版本，不需要配置@snowpack/plugin-webpack。您只需使用Snowpack的配置文件snowpack.config.js来指定项目的入口文件、输出目录、插件等。
 
