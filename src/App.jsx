@@ -24,7 +24,7 @@ function App() {
       </header>
       <main>
         <MyButton></MyButton>
-        <MyEditor></MyEditor>
+        <MyEditor/>
 
       </main>
     </div>
