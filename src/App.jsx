@@ -23,9 +23,7 @@ function App() {
         </p> */}
       </header>
       <main>
-        <MyButton></MyButton>
         <MyEditor/>
-
       </main>
     </div>
   );
