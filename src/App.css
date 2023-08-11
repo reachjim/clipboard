@@ -1,37 +1,64 @@
 .App {
-    text-align: center;
-  }
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+}
   
-  .App p {
-    margin: 0.4rem;
-  }
+.App p {
+  margin: 0.4rem;
+}
   
+.App-logo {
+  height: 40vmin;
+}
+
+
+  
+@media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    height: 40vmin;
+    animation: App-logo-spin infinite 20s linear;
   }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-  
+}
+
+.App-header {
+  min-height: 10vh;
+  display: flex;
+  border-bottom: 1px solid #C0C0C0; 
+}
+
+.App>main{
+  height: 90vh;
+  min-height: 10vh;
+  display: flex;
+}
+
+@media only screen and (max-width: 768px) {
   .App-header {
-    min-height: 10vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    border-bottom: 1px solid #C0C0C0; 
+    min-height: 48px;
   }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .App-header {
+    min-height: 64px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .App-header {
+    min-height: 64px;
+  }
+}
   
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
