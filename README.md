@@ -35,8 +35,7 @@ No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
 6. [react quicklink](https://web.dev/quicklink/)
 7. [prefetch](https://web.dev/preconnect-and-dns-prefetch/)
 8. (https://developer.chrome.com/docs/devtools/network/reference/?utm_source=devtools#timing-explanation)
-9. 测试网站 
-   https://pagespeed.web.dev/analysis/https-online-cpcpcbcb-xyz/hd4v59oalx?form_factor=mobile
-10. css颜色
-   https://materialui.co/htmlcolors
-11. 带按钮的editor https://codesandbox.io/s/draftjs-elzxnm?file=/src/App.tsx:861-879
+9. [测试网站](https://pagespeed.web.dev/analysis/https-online-cpcpcbcb-xyz/hd4v59oalx?form_factor=mobile)
+10. [css颜色](https://materialui.co/htmlcolors)
+11. [带按钮的editor](https://codesandbox.io/s/draftjs-elzxnm?file=/src/App.tsx:861-879)
+12. [indexdb wrapper](https://dexie.org/)

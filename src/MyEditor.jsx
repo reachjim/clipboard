@@ -22,7 +22,7 @@ function MyEditor() {
     editor.current.focus();
   }
 
- async function handlePastedFiles(files) {
+  function handlePastedFiles(files) {
     // 处理粘贴的文件
     const fileArray = Array.from(files);
     for(const file of fileArray) {
