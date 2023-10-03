@@ -34,8 +34,13 @@ No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
 5. [react prefetching](https://medium.com/@anokyy/the-easiest-way-to-prefetch-links-and-fix-fetch-waterfalls-in-react-query-useswr-apollo-client-or-33ae59409bf4)
 6. [react quicklink](https://web.dev/quicklink/)
 7. [prefetch](https://web.dev/preconnect-and-dns-prefetch/)
-8. (https://developer.chrome.com/docs/devtools/network/reference/?utm_source=devtools#timing-explanation)
+8. [chrome dev tool网络](https://developer.chrome.com/docs/devtools/network/reference/?utm_source=devtools#timing-explanation)
 9. [测试网站](https://pagespeed.web.dev/analysis/https-online-cpcpcbcb-xyz/hd4v59oalx?form_factor=mobile)
 10. [css颜色](https://materialui.co/htmlcolors)
 11. [带按钮的editor](https://codesandbox.io/s/draftjs-elzxnm?file=/src/App.tsx:861-879)
 12. [indexdb wrapper](https://dexie.org/)
+13. [json diff path](https://www.npmjs.com/package/fast-json-patch)
+14. 学习draftjs的stateContent
+    1.  https://learn-draftjs-now.vercel.app/content-state
+    2.  https://www.draft-js-plugins.com/plugin/image
+15. [json diff](https://www.npmjs.com/package/fast-json-patch)

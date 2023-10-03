@@ -1,12 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import { EditorState, AtomicBlockUtils} from 'draft-js';
+import React, {useState, useEffect,forwardRef,useImperativeHandle} from 'react';
+import { EditorState, AtomicBlockUtils,convertToRaw} from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import Editor from '@draft-js-plugins/editor';
 import createImagePlugin from '@draft-js-plugins/image';
 
-
-
-function MyEditor() {
+const MyEditor = forwardRef((props, ref) => {
   const [editorState, setEditorState] = React.useState(() =>
     EditorState.createEmpty()
   );
@@ -17,11 +15,11 @@ function MyEditor() {
 
   // 访问 DOM 元素或在 React 组件之间共享数据
   const editor = React.useRef(null);
-
   function focusEditor() {
     editor.current.focus();
   }
 
+  // 从剪切板粘贴图像
   function handlePastedFiles(files) {
     // 处理粘贴的文件
     const fileArray = Array.from(files);
@@ -43,6 +41,22 @@ function MyEditor() {
     }
   }
 
+  // 定义暴露给父组件的方法
+  useImperativeHandle(ref, () => ({
+    handleSave: () => {
+      handleSave();
+    }
+  }));
+  
+
+  // 保存编辑器内容
+  function handleSave(){
+    const content = editorState.getCurrentContent();
+    // 保存到数据库
+    const rawContent = JSON.stringify(convertToRaw(content));
+    console.log(rawContent);
+  }
+
   return (
     <div
       style={{ minHeight: "6em", cursor: "text", margin:"0 0.5em" }}
@@ -59,5 +73,5 @@ function MyEditor() {
     </div>
   );
 }
-
+);
 export default MyEditor;

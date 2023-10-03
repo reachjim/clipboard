@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
-export default function MyButton() {
+export default function MyButton({ onSave }) {
+    const handleSaveClick = () => {
+      onSave()
+    }
     return (
-      <button>I'm a button</button>
+      <button onClick={handleSaveClick}>save</button>
     );
 }
