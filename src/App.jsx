@@ -22,6 +22,10 @@ function App() {
     myEditorRef.current.handleSave();
   };
 
+  const handleLoad = () => {
+    myEditorRef.current.handleLoad();
+  };
+
   useEffect(() => {
 
   }, []);
@@ -35,6 +39,7 @@ function App() {
           Page has been open for <code>{count}</code> seconds. Hello
         </p> */}
         <MyButton onSave={handleSave} />
+        <button onClick={handleLoad} >load</button>
       </header>
       <main>
         <MyEditor ref={myEditorRef} />
