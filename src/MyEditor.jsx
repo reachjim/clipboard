@@ -1,15 +1,15 @@
-import React, {useState, useEffect,forwardRef,useImperativeHandle} from 'react';
+import React, {useState, useEffect,forwardRef,useImperativeHandle, useMemo} from 'react';
 import { EditorState, AtomicBlockUtils,convertToRaw, convertFromRaw} from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import Editor from '@draft-js-plugins/editor';
 import createImagePlugin from '@draft-js-plugins/image';
 // import { createDatabase, loadLastSnapshot } from './storage/db';
 import Dexie from 'dexie';
+import * as jsonpatch from 'fast-json-patch';
+import { applyOperation } from 'fast-json-patch';
 
 const MyEditor = forwardRef((props, ref) => {
-  const [editorState, setEditorState] = React.useState(() =>
-    EditorState.createEmpty()
-  );
+  const [editorState, setEditorState] = React.useState(() => EditorState.createEmpty());
 
   const imagePlugin = createImagePlugin();
   const plugins = [imagePlugin];
@@ -51,35 +51,68 @@ const MyEditor = forwardRef((props, ref) => {
       handleLoad();
     }
   }));
+
+  function handleLoad() {
+    loadLastSnapshot();
+  }
   
 
   // 保存编辑器内容
   function handleSave() {
     const content = editorState.getCurrentContent();
+    const rawContent = convertToRaw(content);
+    const patch = jsonpatch.compare(lastEditorContent, rawContent);
+    setLastEditorContent(rawContent);
     // 保存到数据库
-    const rawContent = JSON.stringify(convertToRaw(content));
-    console.log(rawContent);
+    saveContentToDb(rawContent);
+    console.log(patch);
   };
 
-  function handleLoad() {
-    loadLastSnapshot().then((editorContent)=>{
-      const lastEditorState = EditorState.createWithContent(editorContent);
-      setEditorState(lastEditorState);
+  function saveContentToDb(content) {
+    db.editorContent.add({
+      createdAt: Date.now(),
+      path: 'default',
+      snapshot: content
     });
-  };
+  }
 
-
-  const db = createDatabase('anonymity');
+  // 创建数据库
+  const [db, setDb] = useState(()=>createDatabase('anonymity'));
+  
+  // useEffect(() => {
+  // }, []);
   function createDatabase(dbName) {
     const db = new Dexie(dbName);
     db.version(1).stores({
-        editorContent: '++id, createdAt, path, snapshot',
+        editorContent: '++id, createdAt, mail, snapshot',
     });
     return db;
   };
 
+  const [lastEditorContent, setLastEditorContent] = useState({});
+  useEffect(() => {
+    loadLastSnapshot();
+  }, []);
+  
+  // 加载上次编辑内容
   function loadLastSnapshot() {
-    return db.editorContent.orderBy('createdAd').reverse().limit(1).toArray();
+    loadContentFromDb().then((editorContent)=>{
+      if (editorContent.length > 0) {
+        const snapshot = editorContent[0].snapshot;
+        if(snapshot) {
+          const lastEditorState = EditorState.createWithContent(convertFromRaw(snapshot));
+          setEditorState(lastEditorState);
+          setLastEditorContent(snapshot);
+        }
+      }
+    });
+  }
+  function loadContentFromDb() {
+    const content = db.editorContent.orderBy('createdAt')
+    .reverse()
+    .limit(1)
+    .toArray();
+    return content;
   }
 
   return (
